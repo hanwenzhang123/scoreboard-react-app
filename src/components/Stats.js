@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Stats = (props) => {
+const Stats = (props) => {      //stateless function
 
-    const totalPlayers = props.players.length;
-    const totalPoints = props.players.reduce((total, player) => {       //reduce method ends up with an value
+    const totalPlayers = props.players.length;      //total number of the players, players from the values in the App.js
+    const totalPoints = props.players.reduce((total, player) => {       //reduce method ends up with an accumulated value
         return total + player.score;
     }, 0);  //initialize a total to be 0
 
@@ -16,7 +16,7 @@ const Stats = (props) => {
                 </tr>
                 <tr>
                 <td>Total Points:</td>
-                <td>{totalPoints}</td>
+                <td>{ totalPoints }</td>
                 </tr>
             </tbody>
         </table>
