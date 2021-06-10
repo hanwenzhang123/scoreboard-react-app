@@ -7,22 +7,22 @@ class App extends Component {
   state = {
     players: [
       {
-        name: "Guil",
+        name: "Puppy",
         score: 0,
         id: 1
       },
       {
-        name: "Treasure",
+        name: "Kitten",
         score: 0,
         id: 2
       },
       {
-        name: "Ashley",
+        name: "Panda",
         score: 0,
         id: 3
       },
       {
-        name: "James",
+        name: "Piglet",
         score: 0,
         id: 4
       }
@@ -53,15 +53,17 @@ class App extends Component {
   }
 
   handleAddPlayer = (name) => {
-    this.setState({
-      players: [
-        ...this.state.players,    //bring the copy of all the players previously existing objects with the new array we are modified
-        {
-          name,   //name: name
-          score: 0,
-          id: this.prevPlayerId += 1    //increase 1 whenever the function is called
-        }
-      ]
+    this.setState( prevState => {   //update based on previously state, make sure this.state always holds the correct updated state
+      return{
+        players: [
+          ...prevState.players,    //presState - all previous players will the included 
+          {
+            name,   //name: name
+            score: 0,
+            id: this.prevPlayerId += 1    //increase 1 whenever the function is called
+          }
+        ]
+      }
     });
   }
 
@@ -77,7 +79,7 @@ class App extends Component {
     return (
       <div className="scoreboard">
         <Header 
-          title="Scoreboard" 
+          title="My Scoreboard" 
           players={this.state.players}    //pass the players object to the children elements
         />
   
